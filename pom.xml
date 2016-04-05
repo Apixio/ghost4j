@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 	
-    <groupId>org.ghost4j</groupId>
+    <groupId>apixio</groupId>
     <artifactId>ghost4j</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0.1</version>
@@ -12,17 +12,33 @@
     <description>Java wrapper for Ghostscript API</description>
     <url>http://www.ghost4j.org</url>
     
+    <properties>
+        <!-- repository location -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <nexus.url>https://build.apixio.com:9090/nexus/content/repositories</nexus.url>
+
+        <!-- distribution management -->
+        <release.repo.id>apixio.thirdparty.build</release.repo.id>
+        <release.repo.url>${nexus.url}/thirdparty</release.repo.url>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- repository location -->
+        <java-version>1.7</java-version>
+        <maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+        <org.springframework-version>3.1.0.RELEASE</org.springframework-version>
+        <org.hibernate-version>3.5.1-Final</org.hibernate-version>
+    </properties>
+
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
+
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        <id>${release.repo.id}</id>
+        <name>Apixio Releases Repository</name>
+        <url>${release.repo.url}</url>
         </repository>
+
     </distributionManagement>
-  
+
     <licenses>
         <license>
             <name>GNU LESSER GENERAL PUBLIC LICENSE</name>
@@ -41,10 +57,6 @@
         <system>GitHub</system>
         <url>https://github.com/zippy1978/ghost4j/issues</url>
     </issueManagement>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <developers>
         <developer>
