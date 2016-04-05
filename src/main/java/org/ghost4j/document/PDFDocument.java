@@ -31,26 +31,47 @@ public class PDFDocument extends AbstractDocument {
      */
     private static final long serialVersionUID = 6331191005700202153L;
 
+    // OCRJob need PdfReader to construct PdfTextExtractor. @author gaurav
+    private  PdfReader pdfReader = null;
+    private  ByteArrayInputStream byteArrayInputStream = null;
+
     @Override
     public void load(InputStream inputStream) throws IOException {
 	super.load(inputStream);
 
 	// check that the file is a PDF
 	ByteArrayInputStream bais = null;
-	PdfReader reader = null;
 
 	try {
 
-	    bais = new ByteArrayInputStream(content);
-	    reader = new PdfReader(bais);
+	    byteArrayInputStream = new ByteArrayInputStream(content);
+	    pdfReader = new PdfReader(byteArrayInputStream);
 
 	} catch (Exception e) {
 	    throw new IOException("PDF document is not valid");
 	} finally {
-	    if (reader != null)
-		reader.close();
-	    IOUtils.closeQuietly(bais);
+        // OCRJob need PdfReader to construct PdfTextExtractor. Will close them in close() function
+	    //if (pdfReader != null) pdfReader.close();
+	    //IOUtils.closeQuietly(byteArrayInputStream);
 	}
+    }
+
+    /**
+      * Get the reader for the loaded pdf file
+      * @author gaurav
+      * @return
+      */
+    public PdfReader getReader() {
+        return pdfReader;
+    }
+           
+    public boolean close() {
+        if (pdfReader != null) {
+              pdfReader.close();
+              IOUtils.closeQuietly(byteArrayInputStream);
+              return true;
+        }
+        return false;
     }
 
     public int getPageCount() throws DocumentException {

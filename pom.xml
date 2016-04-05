@@ -6,7 +6,7 @@
     <groupId>org.ghost4j</groupId>
     <artifactId>ghost4j</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.0.1</version>
 	
     <name>Ghost4J</name>
     <description>Java wrapper for Ghostscript API</description>

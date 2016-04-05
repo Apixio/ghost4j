@@ -289,7 +289,10 @@ public class Ghostscript {
 	    public int callback(Pointer caller_handle, String str, int len) {
 
 		try {
-		    getStdOut().write(str.getBytes(), 0, len);
+            // To avoid writing PHI data, the next line must be commented out.
+		    //getStdOut().write(str.getBytes(), 0, len);
+            String strAlternate = new String("GhostscriptLibrary callback\n");
+            getStdOut().write(strAlternate.getBytes(), 0, strAlternate.length());
 		} catch (IOException ex) {
 		    // do nothing
 		}
