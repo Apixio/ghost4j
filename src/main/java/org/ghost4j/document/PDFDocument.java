@@ -14,11 +14,11 @@ import java.io.InputStream;
 
 import org.apache.commons.io.IOUtils;
 
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfCopy;
-import com.lowagie.text.pdf.PdfImportedPage;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfCopy;
+import com.itextpdf.text.pdf.PdfImportedPage;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfWriter;
 
 /**
  * 
@@ -114,7 +114,7 @@ public class PDFDocument extends AbstractDocument {
 
 	if (content != null) {
 
-	    com.lowagie.text.Document document = new com.lowagie.text.Document();
+	    com.itextpdf.text.Document document = new com.itextpdf.text.Document();
 
 	    try {
 
@@ -162,7 +162,7 @@ public class PDFDocument extends AbstractDocument {
 	super.append(document);
 
 	ByteArrayOutputStream baos = null;
-	com.lowagie.text.Document mergedDocument = new com.lowagie.text.Document();
+	com.itextpdf.text.Document mergedDocument = new com.itextpdf.text.Document();
 
 	try {
 
